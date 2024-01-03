@@ -29,6 +29,7 @@ public class RegionController {
 		regionDTO.setRegion_name(name);
 		
 		int result = this.regionDAO.add(regionDTO);
+		
 		String msg="등록 실패";
 		if(result>0) {
 			msg = "등록 성공";
