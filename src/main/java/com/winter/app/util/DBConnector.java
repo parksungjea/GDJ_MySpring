@@ -12,7 +12,7 @@ public class DBConnector {
 	public static Connection getConnector() throws Exception {
 		String user="user01";
 		String password="user01";
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String url="jdbc:oracle:thin:@15.164.129.169:1521:xe";
 		String driver="oracle.jdbc.driver.OracleDriver";
 		
 		//1. driver를 메모리에 로딩(객체 생성)
