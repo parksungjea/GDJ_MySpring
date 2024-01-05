@@ -13,6 +13,19 @@ public class DepartmentDAO {
 		private SqlSession sqlSession;
 		private String namespace="com.winter.app.departments.DepartmentDAO.";
 	
+		
+	public int Delete(DepartmentDTO departmentDTO) throws Exception{
+		return sqlSession.delete(namespace+"Delete", departmentDTO);
+	}
+		
+	public int update(DepartmentDTO departmentDTO) throws Exception {
+		return sqlSession.update(namespace+"update", departmentDTO);
+	}
+		
+	public int add(DepartmentDTO departmentDTO) throws Exception{
+		return sqlSession.insert(namespace+"add", departmentDTO);
+	}
+		
 	public List<DepartmentDTO> getList() {
 				return sqlSession.selectList(namespace+"getList");
 	}

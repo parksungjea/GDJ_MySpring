@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.synth.Region;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,41 +22,19 @@ public class RegionDAO {
 	private SqlSession sqlSession;
 	private final String namespace="com.winter.app.regions.RegionDAO.";
 	
+	
+	public int Delete(RegionDTO regionDTO) {
+		return sqlSession.delete(namespace+"Delete", regionDTO);
+	}
 	//update
 	public int update(RegionDTO regionDTO) throws Exception {
-		Connection con = DBConnector.getConnector();
-		
-		String sql="UPDATE REGIONS SET REGION_NAME=? WHERE REGION_ID=?";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setString(1, regionDTO.getRegion_name());
-		st.setInt(2, regionDTO.getRegion_id());
-		
-		int result = st.executeUpdate();
-		
-		DBConnector.disConnect(st, con);
-		
-		return result;
+			return sqlSession.update(namespace+"update", regionDTO);
 		
 	}
 	
 	//Insert
 	public int add(RegionDTO regionDTO)throws Exception{
-		Connection con = DBConnector.getConnector();
-		
-		String sql = "INSERT INTO REGIONS VALUES(?, ?)";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setInt(1, regionDTO.getRegion_id());
-		st.setString(2, regionDTO.getRegion_name());
-		
-		int result = st.executeUpdate();
-		
-		DBConnector.disConnect(st, con);
-		
-		return result;
+			return sqlSession.insert(namespace+"add", regionDTO);
 	}
 	
 	//detail
