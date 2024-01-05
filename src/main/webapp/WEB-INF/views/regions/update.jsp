@@ -1,20 +1,15 @@
-<%@page import="com.winter.app.regions.RegionDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+  </head>
 <body>
-	
-	<header>
+<header>
     	<nav class="navbar bg-dark  navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 		  <div class="container-fluid">
 		    <a class="navbar-brand" href="#">Navbar</a>
@@ -27,7 +22,7 @@
 		          <a class="nav-link active" aria-current="page" href="/">Home</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="./regions/list">Regions</a>
+		          <a class="nav-link" href="/regions/list">Regions</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="/departments/list">Departments</a>
@@ -48,36 +43,23 @@
 		</nav>
     
     </header>
+    
+    <section id="contents" class="container-fluid" >
+    	<div class="row mt-4">
+			<form action="./update" method="post">
+			  <input type="hidden" name="region_id" value="${dto.region_id}">
+			  <div class="mb-3">
+			    <label for="regionName" class="form-label">RegionName</label>
+			    <input type="text" name="region_name" value="${dto.region_name }" class="form-control" id="regionName">
+			  </div>
 
-	<h1>Regions List</h1>
-	
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>ID</th><th>NAME</th>
-			</tr>
-		</thead>
-		<!-- for(int i=0;i<;i++) -->
-		<!-- for(타입명 변수명:배열명) -->
-		<c:forEach items="${requestScope.list}" var="dto">
-			<tr>
-				<td>${pageScope.dto.region_id}</td>
-				<td><a href="./detail?region_id=${dto.region_id}">${pageScope.dto.region_name}</a></td>
-			</tr>
-		</c:forEach>
+			  <button type="submit" class="btn btn-primary">Add</button>
+			</form>    		
+    	
+    	</div>
+    
+    </section>
 
 
-		<tbody>
-			
-		</tbody>
-		
-	</table>
-	
-	<a href="./add" class="btn btn-success">Add</a>
-	 
-	
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>	
 </body>
 </html>

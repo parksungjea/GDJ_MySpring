@@ -18,9 +18,11 @@ import com.winter.app.util.DBConnector;
 @Repository
 public class RegionDAO {
 	
+	
 	@Autowired
 	private SqlSession sqlSession;
 	private final String namespace="com.winter.app.regions.RegionDAO.";
+
 	
 	
 	public int Delete(RegionDTO regionDTO) {
